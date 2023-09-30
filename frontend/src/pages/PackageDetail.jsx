@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import BookingForm from '../components/BookingForm';
 import useFetch from '../hooks/useFetch';
 import calculateAvgRating from '../utils/calculateAvgRating';
+import { AuthContext } from '../context/AuthContext';
 
 const PackageDetail = () => {
   const { _id } = useParams();
+
+  const {user} = useContext(AuthContext)
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,11 +46,11 @@ const PackageDetail = () => {
              <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
              <p className="mt-2 text-gray-700">{description}</p>
              <p className="mt-2 text-lg font-semibold text-gray-900">${price}</p>
-             <div className="mt-4 flex items-center space-x-2">
+             {/* <div className="mt-4 flex items-center space-x-2">
                <span className="text-yellow-500">{avgRating.toFixed(1)}</span>
                <span className="text-gray-700">({reviews?.length} Reviews)</span>
-             </div>
-             <div className="mt-4 flex items-center space-x-2">
+             </div> */}
+             <div className="flex items-center space-x-2">
                <div className="flex items-center space-x-2">
                  <div className="relative">
                    <svg

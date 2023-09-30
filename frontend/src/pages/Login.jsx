@@ -39,7 +39,7 @@ const Login = () => {
           console.log('result: ',result)
           if(!res.ok) alert(result.message)
 
-          dispatch({type:'LOGIN_SUCCESSS', payload: result.data})
+          dispatch({type:'LOGIN_SUCCESS', payload:result.data})
           navigate('/')
 
         } catch (error) {

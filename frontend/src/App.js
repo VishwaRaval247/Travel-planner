@@ -10,9 +10,12 @@ import Footer from './components/Footer'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import SearchResultByList from './pages/SearchResultByList'
+import { AuthContextProvider } from './context/AuthContext';
+import { ThankYou } from './pages/ThankYou'
 
 export const App = () => {
   return (
+    <AuthContextProvider>
       <BrowserRouter>
     <div>
       <Header/>
@@ -25,10 +28,12 @@ export const App = () => {
           <Route path='/signup' element={<Signup/>} />
           <Route path='/login' element={<Login/>} />
           <Route path='packages/search' element={<SearchResultByList/>} />
+          <Route path='/thank-you' element={<ThankYou/>} />
         </Routes>
        <Footer/> 
     </div>
       </BrowserRouter>
+      </AuthContextProvider>
   )
 }
 

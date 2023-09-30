@@ -18,7 +18,7 @@ const SearchResultByList = () => {
           className="object-cover w-full h-full"
         />
       </div>
-      <div className="mt-4">
+      <div className="m-4">
         {packagesData.length === 0 ? (
           // Render "No packages found" message if packagesData is empty
           <p className="text-center text-red-500">No packages found.</p>

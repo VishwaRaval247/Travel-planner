@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch';
 
 const FeaturedPackages = () => {
   const { data: featuredPackages,loading,error } = useFetch(`${process.env.REACT_APP_BASE_URL}/packages/search/featured`);
-  console.log(featuredPackages);
+  // console.log(featuredPackages);
   return (
     <div>
       <div className='flex items-center justify-center'>

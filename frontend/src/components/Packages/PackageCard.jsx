@@ -4,6 +4,7 @@ import calculateAvgRating from '../../utils/calculateAvgRating';
 
 const PackageCard = ({ packageData }) => {
   const { _id, title, description, price, photo, destinations,  reviews } = packageData;
+  console.log('reviews',reviews)
   const{ totalRating, avgRating} = calculateAvgRating(reviews)
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
@@ -25,7 +26,7 @@ const PackageCard = ({ packageData }) => {
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold text-gray-900 dark:text-white">${price}</p>
           <div className="flex items-center space-x-2">
-            <span className="text-yellow-500 flex items-center">
+            {/* <span className="text-yellow-500 flex items-center">
               <div className="ml-2 mr-1 text-yellow-500">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 text-yellow-500">
                   <path
@@ -42,13 +43,13 @@ const PackageCard = ({ packageData }) => {
                   ({reviews.length} Reviews)
                 </span>)
               }
-            </span>
+            </span> */}
             
           </div>
         </div>
         <Link to={`/packages/${_id}`}>
           <button
-            className="inline-block px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-500 focus:ring-4 focus:outline-none"
+            className="mt-2 inline-block px-3 py-2 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-500 focus:ring-4 focus:outline-none"
           >
             Read more
           </button>

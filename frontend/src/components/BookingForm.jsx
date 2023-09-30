@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const BookingForm = ({ packageData }) => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    phoneNumber: '',
-    date: '',
-    guests: '',
+
+  const { price, title } = packageData;
+  const { user } = useContext(AuthContext);
+
+  console.log('price,title',price,title)
+  const [booking, setBooking] = useState({
+    userId: user && user._id,
+    userEmail: user && user.email,
+    packageName: title || '',
+    fullName: '',       // Initialize fullName
+    phoneNumber: '',    // Initialize phoneNumber
+    guests: 1,          // Initialize guests
+    bookAt: '',         // Initialize bookAt
   });
 
-  const { fullName, phoneNumber, date, guests } = formData;
-  const { price } = packageData;
+  const { fullName, phoneNumber, guests, bookAt } = booking;   // Destructure these variables
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setBooking({ ...booking, [name]: value });
   };
 
   const calculateTotalPrice = () => {
@@ -21,16 +32,20 @@ const BookingForm = ({ packageData }) => {
     return parseInt(guests) * price;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(booking);
     const totalPrice = calculateTotalPrice();
-    console.log('Booking Data:', {
-      fullName,
-      phoneNumber,
-      date,
-      guests,
-      totalPrice,
-    });
+    try {
+      if (!user || user === undefined || user === null) {
+        alert('Please sign in.');
+      } else {
+        navigate('/thank-you');
+        
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -66,14 +81,14 @@ const BookingForm = ({ packageData }) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="date">
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="bookAt">
             Date
           </label>
           <input
             type="date"
-            name="date"
-            id="date"
-            value={date}
+            name="bookAt"
+            id="bookAt"
+            value={bookAt}
             onChange={handleChange}
             className="w-full p-2 border rounded-md"
             required

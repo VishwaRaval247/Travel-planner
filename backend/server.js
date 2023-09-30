@@ -19,13 +19,13 @@ const corsOptions = {
   credentials: true,
 };
 // MongoDB connection setup
-mongoose.set("strictQuery", false);
+// mongoose.set("strictQuery", false);
 
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
-      useUnifiedTopology: true, // Fixed typo here
+      useUnifiedTopology: true, 
     });
 
     console.log('MongoDB connected successfully.');

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import videoSource from '../assets/videos/background.mp4';
 import SearchBar from '../components/SearchBar';
 import FeaturedPackages from '../components/Packages/FeaturedPackages';
@@ -20,9 +21,11 @@ const Home = () => {
             <h2 className="text-6xl font-bold text-white">Travel</h2>
             <p className="text-white text-lg mb-4">Book With Us And Book It Out Of Here!</p>
             <div>
-              <a href="#" className="inline-block mt-4 text-sm bg-red-600 h-10 w-28 px-4 py-2 leading-none rounded flex items-center justify-center text-white hover:bg-red-500 mt-2 lg:mt-0">
-                Book Now
-              </a>
+              <Link to='/packages'>
+                <p className="inline-block mt-4 text-sm bg-red-600 h-10 w-28 px-4 py-2 leading-none rounded flex items-center justify-center text-white hover:bg-red-500 mt-2 lg:mt-0">
+                  Explore
+                </p>
+              </Link>
             </div>
           </div>
           <div className="w-1/2 p-4 flex justify-start items-center">

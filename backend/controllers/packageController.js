@@ -167,7 +167,7 @@ const deletePackage = async (req, res) => {
 const getFeaturedPackages = async (req, res) => {
     try {
       // Use Mongoose to find packages where the 'featured' field is set to true
-      const featuredPackages = await Package.find({ featured: true }).populate('reviews').limit(4);
+      const featuredPackages = await Package.find({ featured: true }).populate('reviews').limit(6);
   
       res.status(200).json({
         success: true,
